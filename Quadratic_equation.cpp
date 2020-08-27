@@ -37,7 +37,10 @@ void sq_eq(double a, double b, double c)
         printf("2 roots, x1 = %lg, x2 = %lg", min(x1, x2), max(x1, x2));
     }
     else 
+    {
+        b = (b == 0) ? -b : b; //чтобы не было -0
         printf("1 root, x = %lg", -b/(2*a));
+    }
 }
 
 int main()
