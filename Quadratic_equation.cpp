@@ -9,6 +9,7 @@ double discriminant(double a, double b, double c)
     return b*b - 4*a*c;
 }
 
+//функция для работы с константными выражениями
 void const_eq(double c)
 {
     if (c == 0)
@@ -17,12 +18,14 @@ void const_eq(double c)
     return ;
 }
 
+//функция для работы с линейными уравнениями
 void line_eq(double b, double c)
 {
     printf("1 root, x = %lg", -c/b);
     return ;
 }
 
+//функция для работы с квадратными уравнениями
 void sq_eq(double a, double b, double c)
 {
     double discrim = discriminant(a, b, c);
