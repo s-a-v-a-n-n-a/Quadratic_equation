@@ -15,14 +15,12 @@ void const_eq(double c)
     if (c == 0)
         printf("All numbers are roots");
     else printf("No roots");
-    return ;
 }
 
 //функция для работы с линейными уравнениями
 void line_eq(double b, double c)
 {
     printf("1 root, x = %lg", -c/b);
-    return ;
 }
 
 //функция для работы с квадратными уравнениями
@@ -38,7 +36,6 @@ void sq_eq(double a, double b, double c)
         printf("2 roots, x1 = %lg, x2 = %lg", min(x1, x2), max(x1, x2));
     }
     else printf("1 root, x = %lg", -b/(2*a));
-    return ;
 }
 
 int main()
