@@ -14,7 +14,8 @@ void const_eq(double c)
 {
     if (c == 0)
         printf("All numbers are roots");
-    else printf("No roots");
+    else 
+        printf("No roots");
 }
 
 //функция для работы с линейными уравнениями
@@ -35,7 +36,8 @@ void sq_eq(double a, double b, double c)
         double x2 = (-b - sqrt(discrim))/(2*a);
         printf("2 roots, x1 = %lg, x2 = %lg", min(x1, x2), max(x1, x2));
     }
-    else printf("1 root, x = %lg", -b/(2*a));
+    else 
+        printf("1 root, x = %lg", -b/(2*a));
 }
 
 int main()
@@ -50,6 +52,7 @@ int main()
             const_eq(c);
     else if (a == 0)
             line_eq(b, c);
-    else sq_eq(a, b, c);
+    else 
+            sq_eq(a, b, c);
     return 0;
 }
