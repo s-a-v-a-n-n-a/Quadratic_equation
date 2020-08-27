@@ -33,7 +33,8 @@ void sq_eq(double a, double b, double c)
         printf("No roots");
     else if(discrim > 0)
     {
-        double x1 = (-b + sqrt(discrim))/(2*a), x2 = (-b - sqrt(discrim))/(2*a);
+        double x1 = (-b + sqrt(discrim))/(2*a);
+        double x2 = (-b - sqrt(discrim))/(2*a);
         printf("2 roots, x1 = %lg, x2 = %lg", min(x1, x2), max(x1, x2));
     }
     else printf("1 root, x = %lg", -b/(2*a));
@@ -42,7 +43,9 @@ void sq_eq(double a, double b, double c)
 
 int main()
 {
-    double a = 0, b = 0, c = 0;
+    double a = 0;
+    double b = 0;
+    double c = 0;
 
     scanf("%lg %lg %lg", &a, &b, &c);
 
