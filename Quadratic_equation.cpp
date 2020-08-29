@@ -156,6 +156,8 @@ int const_eq(double c)
 
 int line_eq(double b, double c, double *x1)
 {
+    assert(x1 == NULL);
+    
     if (b == 0)
     {
         return -2;
@@ -167,6 +169,9 @@ int line_eq(double b, double c, double *x1)
 
 int sq_eq(double a, double b, double c, double *x1, double *x2)
 {
+    assert(x1 == NULL);
+    assert(x2 == NULL);
+    
     if (a == 0)
     {
         return -2;
