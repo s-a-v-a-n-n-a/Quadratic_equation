@@ -94,9 +94,9 @@ int main()
     double x1 = 0;
     double x2 = 0;
 
-    unit_tests_for_consteq();
-    unit_tests_for_line_eq();
-    unit_tests_for_squareq();
+    //unit_tests_for_consteq();
+    //unit_tests_for_line_eq();
+    //unit_tests_for_squareq();
 
     scanf("%lg %lg %lg", &a, &b, &c);
 
@@ -157,8 +157,8 @@ int const_eq(double c)
 
 int line_eq(double b, double c, double *x1)
 {
-    assert(x1 == NULL);
-    
+    assert(x1 != NULL);
+
     if (b == 0)
     {
         return ERR;
@@ -170,9 +170,9 @@ int line_eq(double b, double c, double *x1)
 
 int sq_eq(double a, double b, double c, double *x1, double *x2)
 {
-    assert(x1 == NULL);
-    assert(x2 == NULL);
-    
+    assert(x1 != NULL);
+    assert(x2 != NULL);
+
     if (a == 0)
     {
         return ERR;
@@ -203,62 +203,92 @@ int sq_eq(double a, double b, double c, double *x1, double *x2)
 void unit_tests_for_consteq()
 {
     {
+        printf("Test 1\n");
+
         int res = const_eq(100);
         assert(res ==  0);
+
+        printf("OK\n\n");
     }
 
     {
+        printf("Test 2\n");
+
         int res = const_eq(0);
         assert(res ==  INF);
+
+        printf("OK\n\n");
     }
 }
 
 void unit_tests_for_line_eq()
 {
     {
+        printf("Test 3\n");
+
         double x1 = 0;
 
         int res = line_eq(5, 2, &x1);
         assert(res ==  1);
         assert(x1 == -0.4);
+
+        printf("OK\n\n");
     }
 
     {
+        printf("Test 4\n");
+
         double x1 = 0;
 
         int res = line_eq(0, 9, &x1);
         assert(res == ERR);
+
+        printf("OK\n\n");
     }
 }
 
 void unit_tests_for_squareq()
 {
     {
+        printf("Test 5\n");
+
         double x1 = 0;
         double x2 = 0;
 
         int res = sq_eq(0, 5, 2, &x1, &x2);
         assert(res == ERR);
+
+        printf("OK\n\n");
     }
 
     {
+        printf("Test 6\n");
+
         double x1 = 0;
         double x2 = 0;
 
         int res = sq_eq(1, 4, 4, &x1, &x2);
         assert(res == 1);
         assert(x1 == -2);
+
+        printf("OK\n\n");
     }
 
     {
+        printf("Test 7\n");
+
         double x1 = 0;
         double x2 = 0;
 
         int res = sq_eq(1, 2, 5, &x1, &x2);
         assert(res == 0);
+
+        printf("OK\n\n");
     }
 
     {
+        printf("Test 8\n");
+
         double x1 = 0;
         double x2 = 0;
 
@@ -266,5 +296,7 @@ void unit_tests_for_squareq()
         assert(res == 2);
         assert(x1 == -1);
         assert(x2 == 3);
+
+        printf("OK\n\n");
     }
 }
