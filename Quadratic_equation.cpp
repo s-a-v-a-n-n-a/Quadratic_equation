@@ -5,7 +5,7 @@
 #define INF -1
 
 //-------------------------------------------------------
-// Swaps to numbers
+// Swaps 2 numbers
 //
 // Parameters:
 //
