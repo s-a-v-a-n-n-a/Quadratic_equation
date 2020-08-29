@@ -1,21 +1,40 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 
 #define INF -1
 #define ERR -2
+#define WRONG -3
+#define RIGHT 1
 
-//-------------------------------------------------------
+//------------------------------------------------------------
+// Scans coefficiets and checks if user entered only 3 of them
+//
+// Parameters:
+//
+// a        address of the first  coefficient
+// b        address of the second coefficient
+// c        address of the third  coefficient
+//
+// Returns:
+//
+// the status WRONG if more than 3 coefficients were entered
+// the status RIGHT if only 3 coefficients were entered
+//------------------------------------------------------------
+int scanning(double *a, double *b, double *c);
+
+//------------------------------------------------------------
 // Swaps 2 numbers
 //
 // Parameters:
 //
 // a1   address of the first number
 // a2   address of the second number
-//-------------------------------------------------------
+//------------------------------------------------------------
 void swap(double *a1, double *a2);
 
-//-------------------------------------------------------
+//------------------------------------------------------------
 // Finds a discriminant
 //
 // Parameters:
@@ -27,11 +46,11 @@ void swap(double *a1, double *a2);
 // Returns:
 //
 // the discriminant
-//-------------------------------------------------------
+//------------------------------------------------------------
 double discriminant(double a, double b, double c) ;
 
 
-//-------------------------------------------------------
+//------------------------------------------------------------
 // Solves a const equation c = 0
 //
 // Parameters:
@@ -41,10 +60,10 @@ double discriminant(double a, double b, double c) ;
 // Returns:
 //
 // flag     the number of roots
-//-------------------------------------------------------
+//------------------------------------------------------------
 int const_eq(double c) ;
 
-//-------------------------------------------------------
+//------------------------------------------------------------
 // Solves a line equation bx + c = 0 when b != 0
 //
 // Parameters:
@@ -56,11 +75,11 @@ int const_eq(double c) ;
 //
 // flag     the number of roots
 // x1       the root
-//-------------------------------------------------------
+//-----------------------------------------------------------
 int line_eq(double b, double c, double *x1);
 
 
-//-------------------------------------------------------
+//-----------------------------------------------------------
 // Solves a square equation ax^2 + bx + c = 0 when a != 0
 //
 // Parameters:
@@ -74,7 +93,7 @@ int line_eq(double b, double c, double *x1);
 // flag     the number of roots
 // x1       the first root
 // x2       the second root
-//-------------------------------------------------------
+//-----------------------------------------------------------
 int sq_eq(double a, double b, double c, double *x1, double *x2);
 
 void unit_tests_for_consteq();
@@ -86,9 +105,9 @@ void unit_tests_for_squareq();
 int main()
 {
     int args = 0;
-    double a = 0;
-    double b = 0;
-    double c = 0;
+    double a         = 0;
+    double b         = 0;
+    double c         = 0;
 
     int kol = 0;
 
@@ -99,8 +118,19 @@ int main()
     //unit_tests_for_line_eq();
     //unit_tests_for_squareq();
 
-    args = scanf("%lg %lg %lg", &a, &b, &c);
-    assert(args == 3);
+    printf("Enter 3 coefficients\n");
+
+    int status = 0;
+
+    do
+    {
+        status = scanning(&a, &b, &c);
+        if (status == WRONG)
+        {
+           printf("Enter only 3 coefficients\n");
+        }
+
+    } while (status == WRONG);
 
     if (a == 0 && b == 0)
     {
@@ -131,6 +161,19 @@ int main()
             printf("1 root, x = %lg\n", x1);
     }
     return 0;
+}
+
+int scanning(double *a, double *b, double *c)
+{
+    int nArgs        = 0;
+    double extra_var = 0;
+
+    char *line = (char*) calloc(4, sizeof(char));
+    line = gets(line);
+    if(nArgs = sscanf(line, "%lg %lg %lg %lg", &a, &b, &c, &extra_var) > 3)
+        return WRONG;
+    else
+        return RIGHT;
 }
 
 void swap(double *a1, double *a2)
