@@ -85,6 +85,7 @@ void unit_tests_for_squareq();
 
 int main()
 {
+    int args = 0;
     double a = 0;
     double b = 0;
     double c = 0;
@@ -98,7 +99,8 @@ int main()
     //unit_tests_for_line_eq();
     //unit_tests_for_squareq();
 
-    scanf("%lg %lg %lg", &a, &b, &c);
+    args = scanf("%lg %lg %lg", &a, &b, &c);
+    assert(args == 3);
 
     if (a == 0 && b == 0)
     {
