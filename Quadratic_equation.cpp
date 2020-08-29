@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define INF -1
+#define ERR -2
 
 //-------------------------------------------------------
 // Swaps 2 numbers
@@ -110,7 +111,7 @@ int main()
     else if (a == 0)
     {
             kol = line_eq(b, c, &x1);
-            if (kol == -2)
+            if (kol == ERR)
                 printf("This is not a line equation\n");
             else
                 printf("1 root, x = %lg", x1);
@@ -118,7 +119,7 @@ int main()
     else
     {
         kol = sq_eq(a, b, c, &x1, &x2);
-        if (kol == -2 )
+        if (kol == ERR)
             printf("This is not a square equation\n");
         else if (kol == 0)
             printf("No roots\n");
@@ -160,7 +161,7 @@ int line_eq(double b, double c, double *x1)
     
     if (b == 0)
     {
-        return -2;
+        return ERR;
     }
 
     *x1 = -c/b;
@@ -174,7 +175,7 @@ int sq_eq(double a, double b, double c, double *x1, double *x2)
     
     if (a == 0)
     {
-        return -2;
+        return ERR;
     }
 
     double discrim = discriminant(a, b, c);
@@ -226,7 +227,7 @@ void unit_tests_for_line_eq()
         double x1 = 0;
 
         int res = line_eq(0, 9, &x1);
-        assert(res ==  -2);
+        assert(res == ERR);
     }
 }
 
@@ -237,7 +238,7 @@ void unit_tests_for_squareq()
         double x2 = 0;
 
         int res = sq_eq(0, 5, 2, &x1, &x2);
-        assert(res ==  -2);
+        assert(res == ERR);
     }
 
     {
@@ -245,7 +246,7 @@ void unit_tests_for_squareq()
         double x2 = 0;
 
         int res = sq_eq(1, 4, 4, &x1, &x2);
-        assert(res ==  1);
+        assert(res == 1);
         assert(x1 == -2);
     }
 
@@ -254,7 +255,7 @@ void unit_tests_for_squareq()
         double x2 = 0;
 
         int res = sq_eq(1, 2, 5, &x1, &x2);
-        assert(res ==  0);
+        assert(res == 0);
     }
 
     {
@@ -262,7 +263,7 @@ void unit_tests_for_squareq()
         double x2 = 0;
 
         int res = sq_eq(1, -2, -3, &x1, &x2);
-        assert(res ==  2);
+        assert(res == 2);
         assert(x1 == -1);
         assert(x2 == 3);
     }
